@@ -1,38 +1,26 @@
 # ChatAppSpring
 
-Over all logic:
-A chat website where users can register, add friends, chat with them(in real time), edit their account and other things.
+Chat app Spring
+A chat website where users can communicate in real time with each other. Users can register, login, add friends, remove friends, chat with friends in real time.
+<br>
+<br>
 
-Technologies used:
-Front end - HTML, CSS, JS(JQuery), Thymeleaf(Serverside rendering).
-
-Back end - Java(Spring framework - Spring boot), MySQL.
-
-Already done:
-✔  Users can register with a validation format using JQuery.
-✔  Users can send, add, delete and chat with friends in a private channel using websockets.
-✔  Users can edit their info and be saved in real time.
-✔  Private messaging is real time and private, it deferentiates the current user and friend.
-✔  User can log out.
-✔  Implement a text saying if the user exist and already is a friend of yours in the add panel from the contact page.
-✔  Messages are saved in the database then are sent to the user(the correct way).
-✔  User can have profile pictures/set them.
-✔  
+<h2>Technologies used</h2>
+The technologies used in this project are:
+<br>
+For front-end: HTML, CSS(bootstrap), JavaScript(with JQuery).
+<br>
+For back-end: Java(Spring Boot), MYSql as database.
+<br>
+Additional: WebSockets(STOMP.js, Sock.js), Signal Protocol(the one as in Signal messenger).
 
 
+<h2>Overall logic</h2>
+What makes this project so special or maybe a little more unique is that it utilises WebSockets to connect to server in real time. Users can receive the messages with delay that is nearly non-existent. Also just for fun it utilises the Signal Protocol, if you would like to implement the Signal Protocol in your project, take a look at my code and hope it will help with it.
+<br>
 
-Almost done:
-~ Check when the friend you are chatting saw your messages if he checks the chat room.
-~ Encryption of the messages, every message sent(by sender) is encrypted and is decrypted on the end user(receiver).
-
-
-
-To be done:
-►►  Friend list updating dynamically everytime you char(or someone starts a chat) such that the chat room goes on top in the message panel.
-►►  Password encryption, can be done with AES or RSA.
-
-►► !!!INDEXING ON THE ON THE SPECIFIC TABLES FOR QUERIES
-
-Idea:
-Change the general function of messages already in database, maybe use fetch for it, save in a list then print them out.
-Any general ideas by the viewers, especially CEO and CTO.
+<h2>What is Signal Protocol and why choose it?</h2>
+Signal protocol is an encryption/decryption algorithm which is used to encrypt/decrypt information. I have used it in my project just to test it out, but please be ware as my project was Server side rendering this implementation is really not that safe since it requires a seperate Front-End. For more info about the Signal Protocol check out the link.
+<br>
+<h2>End</h2>
+This project was done for fun as is not meant to be used in a real life scenario, this is a experiment/prototype that I have done which will be used to make an implementation in the place I'm working. If my project can insspire/help You in any way, You are free to use it or be inspired by it.
