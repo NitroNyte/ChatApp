@@ -20,7 +20,7 @@ What makes this project so special or maybe a little more unique is that it util
 <br>
 
 <h2>What is Signal Protocol and why choose it?</h2>
-Signal protocol is an encryption/decryption algorithm which is used to encrypt/decrypt information. I have used it in my project just to test it out, but please be ware as my project was Server side rendering this implementation is really not that safe since it requires a seperate Front-End. For more info about the Signal Protocol check out the link.
+Signal protocol is an encryption/decryption algorithm which is used to encrypt/decrypt information. I have used it in my project just to test it out, but please be ware as my project was Server side rendering this implementation is really not that safe since it requires a seperate Front-End. For more info about the Signal Protocol check out the repo: <a href="https://github.com/signalapp/libsignal">libsignal github</a>.
 <br>
 <h2>End</h2>
-This project was done for fun as is not meant to be used in a real life scenario, this is a experiment/prototype that I have done which will be used to make an implementation in the place I'm working. If my project can insspire/help You in any way, You are free to use it or be inspired by it.
+This project was done for fun as is not meant to be used in a real life scenario, this is a experiment/prototype that I have done which will be used to make an implementation in the place I'm working. If my project can inspire/help You in any way, You are free to use it or be inspired by it.
