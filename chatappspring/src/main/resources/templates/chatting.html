@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>x2Chat</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/funky.css"/>
+    <link rel="stylesheet" href="/css/header.css"/>
+    <link rel="stylesheet" href="/css/starColor.css"/>
+</head>
+
+<body>
+<header th:insert="~{fragments/header :: navbar}" class="p-3"></header>
+<main>
+    <input type="hidden" id="currentUserId" th:value="${currentUser.id}"/>
+
+    <section id="chatPanel" class="pl-3 pr-3 pt-3">
+        <div class="nameBox">
+            <p
+                    style="
+              color: white;
+              border-bottom: 1px solid white;
+              padding-bottom: 10px;
+            "
+            >
+                Messages
+            </p>
+        </div>
+
+        <ul style="list-style-type: none" th:each="friend : ${friendsList}">
+            <a
+                    style="text-decoration: none"
+                    th:href="@{/times2/chat/{id}(id=${friend.id})}"
+            >
+                <li>
+                    <div class="node">
+                        <img src="/images/account.svg" alt="" width="60"/>
+                        <div class="info">
+                            <p th:text="${friend.name}">name</p>
+                            <p class="text-secondary" th:text="${friend.status}">
+                                Status
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </a>
+        </ul>
+    </section>
+
+    <section
+            id="messagePanel"
+            class="messagePanelEdit"
+            th:object="${currentFriend}"
+    >
+        <div class="infoBox">
+            <img src="/images/account.svg" alt="picture" width="60"/>
+            <div id="nameAndSurname" class="nameBox">
+                <p th:text="*{name}">Name surname</p>
+            </div>
+        </div>
+
+        <div class="textAreaMessages pb-5" id="chatArea"></div>
+
+        <div class="messageBox">
+            <input id="msgTypeBox" type="text" placeholder="Text goes here..."/>
+            <button id="sendButton">
+                <svg
+                        id="sendButtonIcon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                >
+                    <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+    ></script>
+    <script src="/js/JQuery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+    <script src="/js/dexie.js"></script>
+    <script src="/js/localDatabase.js"></script>
+    <script th:src="@{/js/chatWeb.js}"></script>
+    <script type="module" src="/js/chattingDynamics.js"></script>
+</main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+    <nav th:fragment="navbar" id="navBar">
+      <ul>
+        <div class="upperPart">
+          <li title="Chats">
+            <a th:href="@{/times2/chat}"
+              ><img src="/images/chat.svg" alt="chats" width="50"
+            /></a>
+          </li>
+          <li title="Contacts" class="mt-3">
+            <a th:href="@{/times2/contact}"
+              ><img src="/images/group.svg" alt="contacts" width="50"
+            /></a>
+          </li>
+        </div>
+        <div class="lowerPart">
+          <li title="Log out" class="mb-3">
+            <a th:href="@{/times2/logout}"
+              ><img src="/images/turnoff.svg" alt="log out" width="50"
+            /></a>
+          </li>
+          <li title="Account">
+            <a th:href="@{/times2/account}"
+              ><img src="/images/account.svg" alt="account" width="50"
+            /></a>
+          </li>
+        </div>
+      </ul>
+    </nav>
+</html>

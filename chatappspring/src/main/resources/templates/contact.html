@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/contact.css" />
+    <link rel="stylesheet" href="/css/starColor.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+  </head>
+
+  <body>
+    <header th:insert="~{fragments/header :: navbar}" class="p-3"></header>
+
+    <main>
+      <section id="friendsTab">
+        <div class="popUpBox" id="popUp">
+          <div id="popUpBox-inner" class="popUpBox-inner">
+            <h4 class="pb-5">
+              Add friends using their email to send a request!
+            </h4>
+            <form th:object="${userFriend}" id="addFriendForm" method="POST">
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input
+                  type="email"
+                  th:field="*{email}"
+                  name="email"
+                  class="form-control"
+                  id="email"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                />
+                <small id="smallTextInfo" class="form-text text-muted"
+                  >Please be specific when entering your friends email</small
+                >
+              </div>
+              <input
+                type="submit"
+                name="sendRequest"
+                class="btn btn-primary mt-3 mb-3"
+                value="Send request"
+                id="sendRequestButton"
+              />
+            </form>
+            <button class="btn btn-primary" id="closePopUp">Close panel</button>
+          </div>
+        </div>
+
+        <div class="popUpBoxNotification" id="popUpNotifications">
+          <div class="popUpBox-Notification">
+            <h4 class="pb-3 border-bottom">Friend requests</h4>
+            <ul th:each="request : ${friendRequests}">
+              <li>
+                <div class="friendRequestGroup pl-3 pr-4 p-1">
+                  <img src="/images/account.svg" alt="" width="60" />
+                  <div class="info">
+                    <p th:text="*{request.name}">Name</p>
+                  </div>
+                  <div class="linkBox">
+                    <a
+                      th:href="@{/times2/contact/accept?id={id}(id=*{request.user})}"
+                      ><img
+                        src="/images/check.svg"
+                        alt=""
+                        width="30"
+                        title="Accept"
+                    /></a>
+                    <a
+                      th:href="@{/times2/contact/delete?id={id}(id=*{request.user})}"
+                      ><img
+                        src="/images/close.svg"
+                        alt=""
+                        width="30"
+                        title="Ignore"
+                    /></a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <button
+              class="btn btn-primary"
+              style="position: relative; top: 8em"
+              id="closePopUpNotification"
+            >
+              Close panel
+            </button>
+          </div>
+        </div>
+
+        <div class="floatingPart">
+          <div class="imagePart">
+            <img
+              src="/images/add.svg"
+              alt="Add friend"
+              id="friend"
+              style="cursor: pointer"
+            />
+            <img
+              src="/images/notification.svg"
+              alt="Notification"
+              id="notifications"
+              style="cursor: pointer"
+            />
+          </div>
+        </div>
+
+        <div id="friendsTabDesign" class="friendsTabDesign">
+          <ul
+            style="text-decoration: none; list-style: none"
+            th:each="friend : ${friendsList}"
+          >
+            <a style="text-decoration: none">
+              <li>
+                <div class="friendsGroup pl-3 pr-4 p-1">
+                  <img src="/images/account.svg" alt="" width="60" />
+                  <div class="info">
+                    <p th:text="${friend.name}">Name Surname</p>
+                    <p class="text-secondary" th:text="${friend.status}">
+                      Online/Offline
+                    </p>
+                  </div>
+                  <div class="linkBox">
+                    <a th:href="@{/times2/chat/{id}(id=*{friend.id})}"
+                      ><img
+                        src="/images/chat.svg"
+                        alt=""
+                        width="30"
+                        title="Chat with friend"
+                    /></a>
+                    <a
+                      th:href="@{/times2/contact/delete?id={id}(id=*{friend.id})}"
+                      ><img
+                        src="/images/close.svg"
+                        alt=""
+                        width="30"
+                        title="Delete friend"
+                    /></a>
+                  </div>
+                </div>
+              </li>
+            </a>
+            <li></li>
+          </ul>
+        </div>
+      </section>
+
+      <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+      ></script>
+      <script src="/js/contactsAnimation.js"></script>
+      <script src="/js/contactsAPI.js"></script>
+    </main>
+  </body>
+</html>

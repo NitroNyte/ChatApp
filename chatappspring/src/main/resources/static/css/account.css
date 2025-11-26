@@ -1,0 +1,78 @@
+* {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+}
+
+main {
+  width: 100%;
+  display: flex;
+}
+
+#accountTab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  color: white;
+  width: 175vh;
+}
+
+.infoBox {
+  border: 2px solid rgb(255, 255, 255, 0.7);
+  padding: 5em;
+  border-radius: 15px;
+  background-color: rgba(10, 10, 10, 0.519);
+}
+
+.infoBox:hover {
+  box-shadow: 0px 0px 10px 10px rgb(255, 255, 255, 0.5);
+  border: 2px solid transparent;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.infoBox img {
+  width: 100px;
+}
+
+#editForm img {
+  width: 100px;
+}
+
+#editForm {
+  border: 2px solid rgb(255, 255, 255, 0.7);
+  padding: 2em 8em;
+  border-radius: 15px;
+  background-color: rgba(10, 10, 10, 0.519);
+}
+
+#editForm:hover {
+  border: 2px solid transparent;
+}
+
+.hover {
+  box-shadow: 0px 0px 10px 10px rgb(255, 255, 255, 0.5);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.afterHover {
+  box-shadow: 0;
+  transition: 0.4s ease, transform 0.4s ease;
+}
+
+#accountTab .imgBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+input[type="file"]{
+color: red;
+}
+
